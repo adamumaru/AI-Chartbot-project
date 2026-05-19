@@ -13,46 +13,46 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #020617;
-    --card: #ffffff;
-    --card-foreground: #020617;
-    --popover: #ffffff;
-    --popover-foreground: #020617;
-    --primary: #4f46e5;
-    --primary-foreground: #ffffff;
-    --secondary: #f1f5f9;
-    --secondary-foreground: #0f172a;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --accent: #f1f5f9;
-    --accent-foreground: #020617;
-    --destructive: #ef4444;
-    --destructive-foreground: #ffffff;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #4f46e5;
-  }
-
-  .dark {
-    --background: #020617;
+    --background: #000000;
     --foreground: #cbd5e1;
-    --card: #0f172a;
+    --card: #080808;
     --card-foreground: #f1f5f9;
-    --popover: #0f172a;
+    --popover: #080808;
     --popover-foreground: #f1f5f9;
     --primary: #6366f1;
     --primary-foreground: #ffffff;
-    --secondary: #1e293b;
+    --secondary: #121212;
     --secondary-foreground: #f1f5f9;
-    --muted: #0f172a;
+    --muted: #0c0c0c;
     --muted-foreground: #94a3b8;
-    --accent: #1e293b;
+    --accent: #141414;
     --accent-foreground: #f1f5f9;
     --destructive: #7f1d1d;
     --destructive-foreground: #ffffff;
-    --border: #1e293b;
-    --input: #1e293b;
+    --border: #1f1f1f;
+    --input: #121212;
+    --ring: #6366f1;
+  }
+
+  .dark {
+    --background: #000000;
+    --foreground: #cbd5e1;
+    --card: #080808;
+    --card-foreground: #f1f5f9;
+    --popover: #080808;
+    --popover-foreground: #f1f5f9;
+    --primary: #6366f1;
+    --primary-foreground: #ffffff;
+    --secondary: #121212;
+    --secondary-foreground: #f1f5f9;
+    --muted: #0c0c0c;
+    --muted-foreground: #94a3b8;
+    --accent: #141414;
+    --accent-foreground: #f1f5f9;
+    --destructive: #7f1d1d;
+    --destructive-foreground: #ffffff;
+    --border: #1f1f1f;
+    --input: #121212;
     --ring: #6366f1;
   }
 }
@@ -79,12 +79,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #262626;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #404040;
 }
 
 .prose {

@@ -41,7 +41,7 @@ export function AboutView() {
               Tailwind CSS, and Framer Motion for a smooth, high-fidelity experience.
             </p>
             <p>
-              Processing is powered by Google's Gemini Pro model, optimized for accurate 
+              Processing is powered by Google's Gemini 2.5 Flash model, optimized for accurate 
               context retrieval and natural conversation.
             </p>
           </CardContent>

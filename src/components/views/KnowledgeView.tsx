@@ -86,11 +86,11 @@ export function KnowledgeView() {
           <p className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">Restricted environment sources</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()} className="h-10 rounded-xl px-4 gap-2 bg-slate-900/50 border-slate-800 text-slate-300 hover:bg-slate-800 text-xs font-bold tracking-widest uppercase">
+          <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()} className="h-10 rounded-xl px-4 gap-2 bg-neutral-900/50 border-border text-slate-300 hover:bg-neutral-900 text-xs font-bold tracking-widest uppercase">
             <Upload size={14} />
             Import
           </Button>
-          <Button variant="outline" size="sm" onClick={handleExport} className="h-10 rounded-xl px-4 gap-2 bg-slate-900/50 border-slate-800 text-slate-300 hover:bg-slate-800 text-xs font-bold tracking-widest uppercase">
+          <Button variant="outline" size="sm" onClick={handleExport} className="h-10 rounded-xl px-4 gap-2 bg-neutral-900/50 border-border text-slate-300 hover:bg-neutral-900 text-xs font-bold tracking-widest uppercase">
             <Download size={14} />
             Export
           </Button>
@@ -112,7 +112,7 @@ export function KnowledgeView() {
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
         <Input 
           placeholder="Filter sources by keywords..." 
-          className="pl-12 h-14 rounded-2xl bg-slate-900 border-slate-800 focus:ring-indigo-500/50 text-slate-200 placeholder:text-slate-600"
+          className="pl-12 h-14 rounded-2xl bg-neutral-950 border-border focus:ring-indigo-500/50 text-slate-200 placeholder:text-slate-600"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -129,10 +129,10 @@ export function KnowledgeView() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 layout
               >
-                <Card className="flex flex-col h-full bg-[#0f172a]/30 border-slate-800/50 hover:bg-[#0f172a]/50 hover:border-indigo-500/50 transition-all duration-300 group overflow-hidden rounded-3xl group shadow-sm">
+                <Card className="flex flex-col h-full bg-card/30 border-border/50 hover:bg-card/50 hover:border-indigo-500/50 transition-all duration-300 group overflow-hidden rounded-3xl group shadow-sm">
                   <div className="p-6 flex-1">
                     <div className="flex items-center justify-between mb-4">
-                      <Badge className="bg-slate-800 text-slate-400 border-slate-700 rounded-lg px-2 py-1 text-[9px] uppercase font-bold tracking-[0.1em]">
+                      <Badge className="bg-neutral-900 text-slate-400 border-neutral-800 rounded-lg px-2 py-1 text-[9px] uppercase font-bold tracking-[0.1em]">
                         {item.category}
                       </Badge>
                       <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -149,7 +149,7 @@ export function KnowledgeView() {
                       {item.content}
                     </p>
                   </div>
-                  <div className="px-6 py-4 bg-slate-900/40 border-t border-slate-800/60 flex items-center justify-between">
+                  <div className="px-6 py-4 bg-neutral-900/40 border-t border-border/60 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></div>
                        <span className="text-[10px] uppercase font-bold text-slate-600 tracking-wider">Active Source</span>
@@ -171,7 +171,7 @@ export function KnowledgeView() {
 
       {/* Add Dialog */}
       <Dialog open={isAdding} onOpenChange={setIsAdding}>
-        <DialogContent className="sm:max-w-[500px] rounded-[2rem] bg-[#0f172a] border-slate-800 p-8">
+        <DialogContent className="sm:max-w-[500px] rounded-[2rem] bg-card border-border p-8">
           <DialogHeader>
             <DialogTitle className="text-white">Add Entry</DialogTitle>
           </DialogHeader>
@@ -183,7 +183,7 @@ export function KnowledgeView() {
                 placeholder="Ex: Technical Documentation" 
                 value={newItem.title}
                 onChange={(e) => setNewItem({...newItem, title: e.target.value})}
-                className="rounded-xl bg-slate-900 border-slate-800 h-12 text-slate-200"
+                className="rounded-xl bg-neutral-950 border-border h-12 text-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -193,7 +193,7 @@ export function KnowledgeView() {
                 placeholder="Ex: HR, Tech, General" 
                 value={newItem.category}
                 onChange={(e) => setNewItem({...newItem, category: e.target.value})}
-                className="rounded-xl bg-slate-900 border-slate-800 h-12 text-slate-200"
+                className="rounded-xl bg-neutral-950 border-border h-12 text-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -201,7 +201,7 @@ export function KnowledgeView() {
               <textarea 
                 id="content" 
                 rows={6}
-                className="flex w-full rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus-visible:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                className="flex w-full rounded-2xl border border-border bg-neutral-950 px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus-visible:outline-none focus:ring-2 focus:ring-indigo-500/50"
                 placeholder="Paste the detailed information here..."
                 value={newItem.content}
                 onChange={(e) => setNewItem({...newItem, content: e.target.value})}
@@ -217,7 +217,7 @@ export function KnowledgeView() {
 
       {/* Edit Dialog */}
       <Dialog open={!!editingItem} onOpenChange={() => setEditingItem(null)}>
-        <DialogContent className="sm:max-w-[500px] rounded-[2rem] bg-[#0f172a] border-slate-800 p-8">
+        <DialogContent className="sm:max-w-[500px] rounded-[2rem] bg-card border-border p-8">
           <DialogHeader>
             <DialogTitle className="text-white">Edit Entry</DialogTitle>
           </DialogHeader>
@@ -228,7 +228,7 @@ export function KnowledgeView() {
                 id="edit-title" 
                 value={editingItem?.title}
                 onChange={(e) => setEditingItem({...editingItem, title: e.target.value})}
-                className="rounded-xl bg-slate-900 border-slate-800 h-12 text-slate-200"
+                className="rounded-xl bg-neutral-950 border-border h-12 text-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -237,7 +237,7 @@ export function KnowledgeView() {
                 id="edit-category" 
                 value={editingItem?.category}
                 onChange={(e) => setEditingItem({...editingItem, category: e.target.value})}
-                className="rounded-xl bg-slate-900 border-slate-800 h-12 text-slate-200"
+                className="rounded-xl bg-neutral-950 border-border h-12 text-slate-200"
               />
             </div>
             <div className="space-y-2">
@@ -245,7 +245,7 @@ export function KnowledgeView() {
               <textarea 
                 id="edit-content" 
                 rows={6}
-                className="flex w-full rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-200 focus-visible:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                className="flex w-full rounded-2xl border border-border bg-neutral-950 px-4 py-3 text-sm text-slate-200 focus-visible:outline-none focus:ring-2 focus:ring-indigo-500/50"
                 value={editingItem?.content}
                 onChange={(e) => setEditingItem({...editingItem, content: e.target.value})}
               />

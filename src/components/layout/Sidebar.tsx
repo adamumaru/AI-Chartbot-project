@@ -45,7 +45,7 @@ export function Sidebar({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-[#020617]/80 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md md:hidden"
           />
           
           <motion.aside
@@ -53,7 +53,7 @@ export function Sidebar({
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-[#1e293b] bg-[#0f172a]/50 backdrop-blur-xl md:relative md:flex"
+            className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-border bg-black/60 backdrop-blur-xl md:relative md:flex"
           >
             <div className="flex h-16 items-center justify-between px-6">
               <div className="flex items-center gap-3 font-bold text-lg tracking-tight text-white">
@@ -86,8 +86,8 @@ export function Sidebar({
                     className={cn(
                       "w-full justify-start gap-3 px-4 py-6 text-sm font-medium transition-all duration-200 rounded-xl",
                       activeTab === item.id 
-                        ? "bg-slate-800 text-white border border-slate-700/50 shadow-inner" 
-                        : "text-slate-400 hover:bg-slate-800/30 hover:text-slate-200"
+                        ? "bg-neutral-900 text-white border border-neutral-800/50 shadow-inner" 
+                        : "text-slate-400 hover:bg-neutral-900/30 hover:text-slate-200"
                     )}
                     onClick={() => {
                       setActiveTab(item.id);
@@ -114,7 +114,7 @@ export function Sidebar({
                           "w-full justify-start gap-3 px-4 py-5 text-xs truncate transition-all duration-200 rounded-xl",
                           currentChatId === chat.id && activeTab === 'chat' 
                             ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20" 
-                            : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/20"
+                            : "text-slate-500 hover:text-slate-300 hover:bg-neutral-900/20"
                         )}
                         onClick={() => {
                           onSelectChat(chat.id);
@@ -146,9 +146,9 @@ export function Sidebar({
               </ScrollArea>
             </div>
 
-            <div className="mt-auto border-t border-slate-800/60 p-6 bg-[#020617]/40">
-              <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800/40 transition-colors cursor-pointer group">
-                <div className="h-9 w-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs font-bold text-slate-300 group-hover:border-indigo-500/50 transition-colors">
+            <div className="mt-auto border-t border-border p-6 bg-black/40">
+              <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-900/40 transition-colors cursor-pointer group">
+                <div className="h-9 w-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-bold text-slate-300 group-hover:border-indigo-500/50 transition-colors">
                   JD
                 </div>
                 <div className="flex flex-col flex-1">

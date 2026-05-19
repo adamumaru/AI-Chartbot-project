@@ -39,7 +39,7 @@ export function ChatInput({ onSend, disabled, placeholder }: ChatInputProps) {
     <div className="relative mx-auto max-w-3xl px-4 w-full">
       <form
         onSubmit={handleSubmit}
-        className="relative flex items-end w-full overflow-hidden transition-all duration-300 border border-slate-800 bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-2xl shadow-indigo-500/5 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-500/50"
+        className="relative flex items-end w-full overflow-hidden transition-all duration-300 border border-neutral-800 bg-neutral-950/80 backdrop-blur-md rounded-2xl shadow-2xl shadow-indigo-500/5 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-500/50"
       >
         <div className="flex items-center justify-center p-4 text-slate-500">
           <Hash size={18} />

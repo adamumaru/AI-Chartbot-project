@@ -92,9 +92,9 @@ export function ChatView() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-[#020617]">
+    <div className="flex h-screen flex-col bg-background">
       {/* Header */}
-      <header className="flex h-16 items-center justify-between border-b border-slate-800 px-8 bg-[#020617]/80 backdrop-blur-md sticky top-0 z-10">
+      <header className="flex h-16 items-center justify-between border-b border-border px-8 bg-background/80 backdrop-blur-md sticky top-0 z-10">
         <div className="flex items-center gap-4 overflow-hidden">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
             <Sparkles size={16} />
@@ -102,7 +102,7 @@ export function ChatView() {
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold text-white truncate max-w-[200px] md:max-w-md">{currentChat?.title || "Chat Assistant"}</h2>
             <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] border border-indigo-500/20 font-bold uppercase tracking-wider">
-              GEMINI 1.5 PRO
+              GEMINI 2.5 FLASH
             </span>
           </div>
         </div>
@@ -111,7 +111,7 @@ export function ChatView() {
              <button onClick={handleExport} className="hover:text-white transition-colors text-xs font-bold tracking-widest uppercase">Export</button>
              <button onClick={handleClear} className="hover:text-destructive transition-colors text-xs font-bold tracking-widest uppercase">Clear</button>
           </div>
-          <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs shadow-sm shadow-black/20">☀️</div>
+          <div className="w-8 h-8 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs shadow-sm shadow-black/20">☀️</div>
         </div>
       </header>
 
@@ -139,7 +139,7 @@ export function ChatView() {
                   <Button 
                     key={q} 
                     variant="ghost" 
-                    className="justify-start h-auto py-4 px-5 rounded-2xl text-xs font-semibold text-slate-300 bg-slate-900/50 border border-slate-800 hover:bg-slate-800 hover:text-white hover:border-slate-700 transition-all text-left"
+                    className="justify-start h-auto py-4 px-5 rounded-2xl text-xs font-semibold text-slate-300 bg-neutral-950/50 border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:border-neutral-800 transition-all text-left"
                     onClick={() => handleSend(q)}
                   >
                     <Sparkles size={12} className="mr-3 text-indigo-400" />
@@ -168,7 +168,7 @@ export function ChatView() {
       </ScrollArea>
 
       {/* Footer / Input */}
-      <footer className="p-8 bg-gradient-to-t from-[#020617] via-[#020617] to-transparent">
+      <footer className="p-8 bg-gradient-to-t from-background via-background to-transparent">
         <ChatInput onSend={handleSend} disabled={isLoading} />
         <p className="mt-4 text-center text-[10px] uppercase tracking-[0.2em] text-slate-600 font-bold">
           Knowledge-base restricted. Answers limited to verified context.

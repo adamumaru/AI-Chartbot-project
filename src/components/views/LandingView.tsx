@@ -39,7 +39,7 @@ export function LandingView({ onStart }: LandingViewProps) {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center bg-[#020617]">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 py-20 text-center bg-background">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export function LandingView({ onStart }: LandingViewProps) {
           Initialize AI
           <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
         </Button>
-        <Button size="lg" variant="outline" className="h-14 px-10 rounded-2xl bg-slate-900/50 backdrop-blur-md border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 transition-all text-sm font-bold uppercase tracking-widest">
+        <Button size="lg" variant="outline" className="h-14 px-10 rounded-2xl bg-neutral-900/50 backdrop-blur-md border-border text-slate-300 hover:text-white hover:bg-neutral-900 transition-all text-sm font-bold uppercase tracking-widest">
           Developer Docs
         </Button>
       </motion.div>
@@ -87,7 +87,7 @@ export function LandingView({ onStart }: LandingViewProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.1 }}
-            className="flex flex-col items-start rounded-3xl border border-slate-800/50 bg-[#0f172a]/30 p-8 text-left backdrop-blur-sm hover:border-indigo-500/50 hover:bg-[#0f172a]/50 transition-all duration-300 group shadow-lg"
+            className="flex flex-col items-start rounded-3xl border border-border/50 bg-card/30 p-8 text-left backdrop-blur-sm hover:border-indigo-500/50 hover:bg-card/50 transition-all duration-300 group shadow-lg"
           >
             <div className={cn("mb-6 flex h-12 w-12 items-center justify-center rounded-xl transition-transform group-hover:scale-110", feature.bg, feature.color)}>
               <feature.icon size={24} />
