@@ -142,7 +142,7 @@ export function useChat() {
     return newChatId;
   };
 
-  const addMessage = async (chatId: string, message: Omit<Message, 'id' | 'timestamp'>) => {
+  const addMessage = async (chatId: string, message: Omit<Message, 'id' | 'timestamp'>, suggestedTitle?: string) => {
     const newMessageId = crypto.randomUUID();
     const timestamp = Date.now();
     const newMessage: Message = {
@@ -155,7 +155,10 @@ export function useChat() {
       if (chat.id === chatId) {
         const newMessages = [...chat.messages, newMessage];
         let newTitle = chat.title;
-        if (chat.messages.length === 0 && message.role === 'user') {
+        
+        if (suggestedTitle) {
+          newTitle = suggestedTitle;
+        } else if (chat.title === 'New Chat' && message.role === 'user') {
           newTitle = message.content.substring(0, 30) + (message.content.length > 30 ? '...' : '');
         }
 

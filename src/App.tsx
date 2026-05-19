@@ -17,9 +17,12 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { 
     histories, 
+    currentChat,
     currentChatId, 
     setCurrentChatId, 
     createChat, 
+    addMessage,
+    clearMessages,
     deleteChat,
     user,
     logout
@@ -58,7 +61,14 @@ export default function App() {
       case "landing":
         return <LandingView onStart={handleStart} />;
       case "chat":
-        return <ChatView />;
+        return (
+          <ChatView 
+            currentChat={currentChat}
+            currentChatId={currentChatId}
+            addMessage={addMessage}
+            clearMessages={clearMessages}
+          />
+        );
       case "auth":
         return <AuthView onAuthSuccess={() => setActiveTab("chat")} onBack={() => setActiveTab("landing")} />;
       case "settings":

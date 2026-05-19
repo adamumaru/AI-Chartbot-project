@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Trash2, Eraser, Download, Settings, Library, Info, Sparkles, AlertTriangle, Bot } from "lucide-react";
-import { useChat } from "../../hooks/useChat";
 import { chatService } from "../../services/api";
 import { ChatMessage } from "../chat/ChatMessage";
 import { ChatInput } from "../chat/ChatInput";
@@ -11,8 +10,16 @@ import { ScrollArea } from "../ui/scroll-area";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
-export function ChatView() {
-  const { currentChat, currentChatId, addMessage, clearMessages } = useChat();
+import { Message, ChatHistory } from "../../types";
+
+interface ChatViewProps {
+  currentChat: ChatHistory | undefined;
+  currentChatId: string | null;
+  addMessage: (chatId: string, message: Omit<Message, 'id' | 'timestamp'>, suggestedTitle?: string) => Promise<void>;
+  clearMessages: (chatId: string) => Promise<void>;
+}
+
+export function ChatView({ currentChat, currentChatId, addMessage, clearMessages }: ChatViewProps) {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +45,7 @@ export function ChatView() {
       );
 
       // 4. Add assistant response
-      addMessage(currentChatId, { role: "assistant", content: response.text });
+      addMessage(currentChatId, { role: "assistant", content: response.text }, response.title);
     } catch (error: any) {
       console.error(error);
       toast.error(error.message || "Failed to get AI response");

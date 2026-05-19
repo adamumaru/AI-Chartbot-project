@@ -51,7 +51,24 @@ Key rules:
         }
       });
 
-      res.json({ text: response.text });
+      let suggestedTitle = undefined;
+      if (!history || history.length === 0) {
+        try {
+          const titleResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: `Generate a short, friendly, and creative 2-4 word title (no quotation marks, no emojis, no prefix, plain text only) summarizing this health question: "${message}"`,
+            config: {
+              temperature: 0.5,
+              maxOutputTokens: 10,
+            }
+          });
+          suggestedTitle = titleResponse.text.trim().replace(/^["']|["']$/g, '');
+        } catch (err) {
+          console.error("Failed to generate suggested title:", err);
+        }
+      }
+
+      res.json({ text: response.text, title: suggestedTitle });
     } catch (error: any) {
       console.error("Gemini API Error:", error);
       res.status(500).json({ error: error.message || "Failed to generate response" });
