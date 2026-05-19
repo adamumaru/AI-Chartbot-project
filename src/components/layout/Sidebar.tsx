@@ -56,10 +56,10 @@ export function Sidebar({
           >
             <div className="flex h-16 items-center justify-between px-6">
               <div className="flex items-center gap-3 font-bold text-lg tracking-tight text-white">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 shadow-lg shadow-indigo-500/20">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-rose-600 shadow-lg shadow-rose-500/20">
                   <div className="w-4 h-4 border-2 border-white rounded-full border-t-transparent animate-spin-slow"></div>
                 </div>
-                <span>KnowledgeAI</span>
+                <span>Health Tips chatbot</span>
               </div>
               <Button variant="ghost" size="icon" onClick={onClose} className="md:hidden text-slate-400">
                 <X size={20} />

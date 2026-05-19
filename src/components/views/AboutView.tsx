@@ -16,14 +16,14 @@ export function AboutView() {
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary shadow-xl">
           <Info size={40} />
         </div>
-        <h2 className="text-4xl font-bold tracking-tight mb-4">About KnowledgeBot</h2>
+        <h2 className="text-4xl font-bold tracking-tight mb-4">About Health Tips chatbot</h2>
         <div className="flex justify-center gap-2 mb-6">
           <Badge variant="outline" className="rounded-full px-4 py-1">Version 1.0.0</Badge>
           <Badge className="rounded-full px-4 py-1 bg-green-500/10 text-green-500 border-green-500/20">Operational</Badge>
         </div>
         <p className="max-w-xl mx-auto text-muted-foreground text-lg italic">
-          "Empowering knowledge management with state-of-the-art AI intelligence, 
-          delivered with a focus on privacy and user experience."
+          "Empowering personal health and wellness with state-of-the-art AI intelligence, 
+          delivered with a focus on privacy and positive lifestyle transformation."
         </p>
       </motion.div>
 
@@ -37,7 +37,7 @@ export function AboutView() {
           </div>
           <CardContent className="px-0 pb-0 text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
-              KnowledgeBot is built using the latest web technologies, including React 19, 
+              Health Tips chatbot is built using the latest web technologies, including React 19, 
               Tailwind CSS, and Framer Motion for a smooth, high-fidelity experience.
             </p>
             <p>
@@ -57,10 +57,10 @@ export function AboutView() {
           <CardContent className="px-0 pb-0 text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
               Your data is yours. We believe that personal information should stay personal. 
-              KnowledgeBot uses Zero-Backend storage philosophy wherever possible.
+              Health Tips chatbot uses Zero-Backend storage philosophy wherever possible.
             </p>
             <p>
-              By storing your knowledge base in LocalStorage, we ensure that you have 
+              By storing your wellness chat history in LocalStorage, we ensure that you have 
               complete control over what you share and delete.
             </p>
           </CardContent>

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Bot, Zap, Shield, Sparkles, MessageSquare, ArrowRight, Library, Settings } from "lucide-react";
+import { Bot, Zap, Shield, Sparkles, MessageSquare, ArrowRight, Library, Settings, Heart } from "lucide-react";
 import { Button } from "../ui/button";
 
 interface LandingViewProps {
@@ -9,32 +9,32 @@ interface LandingViewProps {
 export function LandingView({ onStart }: LandingViewProps) {
   const features = [
     {
-      title: "Local Knowledgebase",
-      description: "Chat with an AI trained specifically on the data you provide locally.",
-      icon: Library,
+      title: "Daily Wellness Tips",
+      description: "Get actionable advice on nutrition, healthy eating, and physical fitness.",
+      icon: Heart,
+      color: "text-rose-400",
+      bg: "bg-rose-500/10",
+    },
+    {
+      title: "Holistic Guidance",
+      description: "Focused on all wellness pillars: hydration, sleep, movement, and stress relief.",
+      icon: Sparkles,
       color: "text-indigo-400",
       bg: "bg-indigo-500/10",
     },
     {
-      title: "Privacy First",
-      description: "All data stays in your browser's local storage. No tracking, no data selling.",
-      icon: Shield,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10",
-    },
-    {
-      title: "Fast Response",
-      description: "Powered by Gemini for lightning-fast, high-quality information retrieval.",
+      title: "Instant Suggestions",
+      description: "Powered by Gemini for reliable, lightning-fast health and lifestyle insights.",
       icon: Zap,
       color: "text-amber-400",
       bg: "bg-amber-500/10",
     },
     {
-      title: "Rich Interactions",
-      description: "Full markdown support, syntax highlighting, and clean code blocks.",
-      icon: Sparkles,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10",
+      title: "Privacy First",
+      description: "Your wellness chats are completely private and remain in your local browser.",
+      icon: Shield,
+      color: "text-emerald-400",
+      bg: "bg-emerald-500/10",
     },
   ];
 
@@ -45,19 +45,19 @@ export function LandingView({ onStart }: LandingViewProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-12 max-w-4xl"
       >
-        <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-indigo-600 text-white shadow-2xl shadow-indigo-500/40 relative overflow-hidden group">
+        <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-rose-600 text-white shadow-2xl shadow-rose-500/40 relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <Bot size={40} className="relative z-10" />
+          <Heart size={40} className="relative z-10 fill-white" />
         </div>
         <h1 className="mb-6 text-5xl font-extrabold tracking-tight md:text-7xl text-white">
-          The Intelligent <br />
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-500 bg-clip-text text-transparent">
-            Knowledge Agent
+          The Simple <br />
+          <span className="bg-gradient-to-r from-rose-400 via-purple-400 to-indigo-500 bg-clip-text text-transparent">
+            Health Tips Chatbot
           </span>
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-slate-400 md:text-xl leading-relaxed">
-          Secure, private AI trained on your project documentation. Add your sources 
-          manually to create a personalized, restricted knowledge environment.
+          Welcome to Health Tips chatbot. Get quick, simple, and daily wellness suggestions on nutrition, 
+          physical activity, sleep quality, and healthy habits.
         </p>
       </motion.div>
 
@@ -70,9 +70,9 @@ export function LandingView({ onStart }: LandingViewProps) {
         <Button 
           size="lg" 
           onClick={onStart} 
-          className="h-14 px-10 gap-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-2xl shadow-indigo-500/30 group transition-all duration-300 text-sm font-bold uppercase tracking-widest border-none"
+          className="h-14 px-10 gap-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white shadow-2xl shadow-rose-500/30 group transition-all duration-300 text-sm font-bold uppercase tracking-widest border-none"
         >
-          Initialize AI
+          Start Coaching
           <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
         </Button>
         <Button size="lg" variant="outline" className="h-14 px-10 rounded-2xl bg-neutral-900/50 backdrop-blur-md border-border text-slate-300 hover:text-white hover:bg-neutral-900 transition-all text-sm font-bold uppercase tracking-widest">
@@ -101,11 +101,11 @@ export function LandingView({ onStart }: LandingViewProps) {
       </div>
       
       <div className="mt-24 flex flex-col items-center gap-6 pb-20">
-        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-600">Enterprise Standard Security</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-600">Personal Health Companion</span>
         <div className="flex gap-12 text-slate-700 opacity-40">
           <Sparkles size={24} />
           <Zap size={24} />
-          <Bot size={24} />
+          <Heart size={24} />
           <Shield size={24} />
         </div>
       </div>

@@ -95,7 +95,7 @@ export function ChatView() {
             <Sparkles size={16} />
           </div>
           <div className="flex items-center gap-2">
-            <h2 className="text-sm font-semibold text-white truncate max-w-[200px] md:max-w-md">{currentChat?.title || "Chat Assistant"}</h2>
+            <h2 className="text-sm font-semibold text-white truncate max-w-[200px] md:max-w-md">{currentChat?.title || "Health Tips chatbot"}</h2>
             <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] border border-indigo-500/20 font-bold uppercase tracking-wider">
               GEMINI 2.5 FLASH
             </span>
