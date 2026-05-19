@@ -7,6 +7,7 @@ import { LandingView } from "./components/views/LandingView";
 import { ChatView } from "./components/views/ChatView";
 import { SettingsView } from "./components/views/SettingsView";
 import { AboutView } from "./components/views/AboutView";
+import { AuthView } from "./components/views/AuthView";
 import { useChat } from "./hooks/useChat";
 import { Button } from "./components/ui/button";
 import { TooltipProvider } from "./components/ui/tooltip";
@@ -14,7 +15,15 @@ import { TooltipProvider } from "./components/ui/tooltip";
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>("landing");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const { histories, currentChatId, setCurrentChatId, createChat, deleteChat } = useChat();
+  const { 
+    histories, 
+    currentChatId, 
+    setCurrentChatId, 
+    createChat, 
+    deleteChat,
+    user,
+    logout
+  } = useChat();
 
   // Responsive sidebar handling
   useEffect(() => {
@@ -30,6 +39,13 @@ export default function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Redirect to chat if logged in and currently on landing or auth
+  useEffect(() => {
+    if (user && (activeTab === "landing" || activeTab === "auth")) {
+      setActiveTab("chat");
+    }
+  }, [user, activeTab]);
+
   const handleStart = () => {
     if (histories.length === 0) {
       createChat();
@@ -43,6 +59,8 @@ export default function App() {
         return <LandingView onStart={handleStart} />;
       case "chat":
         return <ChatView />;
+      case "auth":
+        return <AuthView onAuthSuccess={() => setActiveTab("chat")} onBack={() => setActiveTab("landing")} />;
       case "settings":
         return <SettingsView />;
       case "about":
@@ -66,6 +84,9 @@ export default function App() {
             onDeleteChat={deleteChat}
             isOpen={isSidebarOpen}
             onClose={() => setIsSidebarOpen(false)}
+            user={user}
+            onLogout={logout}
+            onLoginClick={() => setActiveTab("auth")}
           />
         )}
 

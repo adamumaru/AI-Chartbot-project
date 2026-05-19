@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare, Library, Settings, Info, Plus, Trash2, Search, Menu, X, ArrowLeft } from "lucide-react";
+import { MessageSquare, Library, Settings, Info, Plus, Trash2, Search, Menu, X, ArrowLeft, LogOut, LogIn } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
@@ -15,6 +16,9 @@ interface SidebarProps {
   onDeleteChat: (id: string) => void;
   isOpen: boolean;
   onClose: () => void;
+  user?: any;
+  onLogout?: () => void;
+  onLoginClick?: () => void;
 }
 
 export function Sidebar({ 
@@ -26,8 +30,22 @@ export function Sidebar({
   onNewChat, 
   onDeleteChat,
   isOpen,
-  onClose
+  onClose,
+  user,
+  onLogout,
+  onLoginClick
 }: SidebarProps) {
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
+  const getInitials = () => {
+    if (!user) return "AN";
+    const name = user.user_metadata?.full_name || user.email || "WU";
+    return name.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase();
+  };
+
+  const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "Guest User";
+
+
   const menuItems = [
     { id: 'chat', label: 'Chat', icon: MessageSquare },
     { id: 'settings', label: 'Settings', icon: Settings },
@@ -146,16 +164,59 @@ export function Sidebar({
             </div>
 
             <div className="mt-auto border-t border-border p-6 bg-black/40">
-              <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-900/40 transition-colors cursor-pointer group">
-                <div className="h-9 w-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-bold text-slate-300 group-hover:border-indigo-500/50 transition-colors">
-                  JD
-                </div>
-                <div className="flex flex-col flex-1">
-                  <span className="text-xs font-semibold text-slate-200">John Doe</span>
-                  <span className="text-[10px] uppercase tracking-tight text-slate-500 font-bold text-indigo-400/80">Pro Plan</span>
-                </div>
-                <Settings size={14} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
-              </div>
+              {user ? (
+                showLogoutConfirm ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col gap-3 p-3 rounded-xl bg-rose-950/20 border border-rose-500/20"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-rose-400 block text-center">Confirm Sign Out?</span>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => {
+                          onLogout?.();
+                          setShowLogoutConfirm(false);
+                        }}
+                        className="flex-1 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer border-none"
+                      >
+                        Sign Out
+                      </button>
+                      <button 
+                        onClick={() => setShowLogoutConfirm(false)}
+                        className="flex-1 py-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-slate-400 text-[10px] font-bold uppercase tracking-widest transition-colors border border-border/80 cursor-pointer"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-900/40 transition-colors group">
+                    <div className="h-9 w-9 rounded-full bg-rose-600/10 border border-rose-500/20 flex items-center justify-center text-xs font-bold text-rose-400">
+                      {getInitials()}
+                    </div>
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <span className="text-xs font-semibold text-slate-200 truncate">{displayName}</span>
+                      <span className="text-[9px] uppercase tracking-tight text-emerald-400 font-bold">Cloud Synced</span>
+                    </div>
+                    <button 
+                      onClick={() => setShowLogoutConfirm(true)}
+                      title="Log Out"
+                      className="p-1.5 text-slate-500 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg transition-colors cursor-pointer"
+                    >
+                      <LogOut size={14} />
+                    </button>
+                  </div>
+                )
+              ) : (
+                <Button 
+                  onClick={onLoginClick}
+                  className="w-full flex items-center justify-center gap-2 py-5 bg-neutral-950 hover:bg-neutral-900 border border-border/80 text-xs font-bold uppercase tracking-wider text-slate-300 rounded-xl transition-all shadow-inner"
+                >
+                  <LogIn size={14} className="text-rose-400" />
+                  Sign In for Cloud Sync
+                </Button>
+              )}
             </div>
           </motion.aside>
         </>
