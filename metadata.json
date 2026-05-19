@@ -1,0 +1,6 @@
+{
+  "name": "KnowledgeBot AI",
+  "description": "A premium AI chatbot trained on your local knowledge base. Secure, fast, and fully customizable.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Getting Started with KnowledgeBot",
+    "content": "KnowledgeBot is a secure AI assistant that uses your local data to provide accurate answers. To get started, go to the Knowledge Management page and add some information.",
+    "category": "General",
+    "updatedAt": 1716075351000
+  },
+  {
+    "id": "2",
+    "title": "Privacy and Security",
+    "content": "All your knowledge data is stored locally in your browser's LocalStorage. It never leaves your machine except when being used as context for the Gemini AI model via an encrypted connection.",
+    "category": "Security",
+    "updatedAt": 1716075351000
+  }
+]
