@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Trash2, Eraser, Download, Settings, Library, Info, Sparkles, AlertTriangle, Bot } from "lucide-react";
 import { useChat } from "../../hooks/useChat";
-import { useKnowledge } from "../../hooks/useKnowledge";
 import { chatService } from "../../services/api";
 import { ChatMessage } from "../chat/ChatMessage";
 import { ChatInput } from "../chat/ChatInput";
@@ -14,7 +13,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/
 
 export function ChatView() {
   const { currentChat, currentChatId, addMessage, clearMessages } = useChat();
-  const { findRelevantContext } = useKnowledge();
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -32,13 +30,10 @@ export function ChatView() {
     setIsLoading(true);
 
     try {
-      // 2. Find relevant context
-      const context = findRelevantContext(content);
-      
-      // 3. Send to Gemini via server proxy
+      // 2. Send to Gemini via server proxy
       const response = await chatService.sendMessage(
         content,
-        context,
+        "",
         currentChat?.messages || []
       );
 

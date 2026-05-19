@@ -5,7 +5,6 @@ import { Menu } from "lucide-react";
 import { Sidebar } from "./components/layout/Sidebar";
 import { LandingView } from "./components/views/LandingView";
 import { ChatView } from "./components/views/ChatView";
-import { KnowledgeView } from "./components/views/KnowledgeView";
 import { SettingsView } from "./components/views/SettingsView";
 import { AboutView } from "./components/views/AboutView";
 import { useChat } from "./hooks/useChat";
@@ -44,8 +43,6 @@ export default function App() {
         return <LandingView onStart={handleStart} />;
       case "chat":
         return <ChatView />;
-      case "knowledge":
-        return <KnowledgeView />;
       case "settings":
         return <SettingsView />;
       case "about":

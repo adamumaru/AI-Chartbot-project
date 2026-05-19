@@ -30,7 +30,6 @@ export function Sidebar({
 }: SidebarProps) {
   const menuItems = [
     { id: 'chat', label: 'Chat', icon: MessageSquare },
-    { id: 'knowledge', label: 'Knowledge', icon: Library },
     { id: 'settings', label: 'Settings', icon: Settings },
     { id: 'about', label: 'About', icon: Info },
   ];
