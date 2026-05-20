@@ -22,14 +22,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: "GEMINI_API_KEY not configured" });
     }
 
-    const systemInstruction = `You are a custom AI assistant.
-Answer ONLY using the provided knowledge context.
-If the answer is not found in the context, say:
-'Sorry, I could not find that information in my knowledge base.'
-Never invent answers.
-
-KNOWLEDGE CONTEXT:
-${context}
+    const systemInstruction = `You are a helpful AI assistant.
+${context ? `\nYou can use the following context if it is relevant to the user's query:\n${context}` : ""}
 `;
 
     const response = await ai.models.generateContent({
